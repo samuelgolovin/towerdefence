@@ -34,6 +34,10 @@ while running:
         tower.update(enemies)
         tower.update_projectiles(enemies)
 
+    for enemy in enemies:
+        if enemy.is_dead():
+            enemies.remove(enemy)
+
     screen.fill((0, 0, 0))
 
 # Spawn enemies at specific intervals
@@ -58,8 +62,6 @@ while running:
     # or do this instead of the above code since we only have one tower anyway.
 
     for enemy in enemies:
-        if enemy.is_dead():
-            enemies.remove(enemy)
         enemy.move_towards_tower(towers[0].position)
         enemy.draw(screen)
 
